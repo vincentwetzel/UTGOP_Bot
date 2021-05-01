@@ -1,6 +1,7 @@
 # TODO: Intro dialogues
 # TODO: Review all volunteer positions to make sure we have appropriate rooms
 # TODO: Create all needed roles
+# TODO: TinyURL and QR Code
 
 import discord
 from discord.ext import commands
@@ -90,14 +91,6 @@ async def on_member_update(before: discord.Member, after: discord.Member) -> Non
                 before.status).upper() + " (WEB)."
         else:
             msg = "Something weird happened when " + before.display_name + " updated their status."
-
-
-    # Process activity changes
-    elif before.activity != after.activity or before.activities != after.activities:
-        if after.activity is None:
-            msg = before.display_name + " STOPPED playing: \t" + before.activity.name
-        else:
-            msg = before.display_name + " STARTED playing: \t" + after.activity.name
 
     # Process nickname changes
     elif before.nick != after.nick:
@@ -431,6 +424,7 @@ async def tables(ctx: discord.ext.commands.Context) -> None:
     with open("Maverick Tables Chairs and Baricades.png", 'rb') as f:
         picture = discord.File(f)
         await ctx.channel.send(file=picture)
+
 
 @bot.command()
 async def chairs(ctx: discord.ext.commands.Context) -> None:
