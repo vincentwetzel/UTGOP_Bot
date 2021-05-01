@@ -141,7 +141,7 @@ async def on_member_join(member: discord.Member) -> None:
     await log_msg_to_server_owner(msg)
     await log_user_activity_to_file(member.display_name, msg)
 
-    add_pleb_role(member)
+    await add_pleb_role(member)
 
 
 @bot.event
